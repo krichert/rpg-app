@@ -3,45 +3,68 @@ import './App.css';
 import Grid from "@material-ui/core/es/Grid/Grid";
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 
-import Navigation from "./Navigation/Navigation";
+import Sidebar from './Sidebar';
+import Content from './Content';
 
 const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#1b5e20'
+    palette: {
+        primary: {
+            light: '#8d6e63',
+            main: '#795548',
+            dark: '#4e342e',
+        },
+        secondary: {
+            light: '#eeeeee',
+            main: '#9e9e9e',
+            dark: '#424242',
+        },
+        info: {
+            light: '#64b5f6',
+            main: '#2196f3',
+            dark: '#1565c0'
+        },
+        error: {
+            light: '#e57373',
+            main: '#f44336',
+            dark: '#b71c1c'
+        },
+        success: {
+            light: '#a5d6a7',
+            main: '#4caf50',
+            dark: '#2e7d32'
+        },
+        warning: {
+            light: '#ffab40',
+            main: '#ff9100',
+            dark: '#ff6d00'
+        },
     },
-    secondary: {
-      main: '#3f51b5'
-    },
-    error: {
-      main: '#b71c1c'
+    typography: {
+        fontFamily: [
+            'Metamorphous',
+            'Almendra',
+            'Roboto',
+        ].join(','),
     }
-  },
 });
 
 class App extends Component {
-  render() {
-    return (
-      <Fragment>
-        <MuiThemeProvider theme={theme}>
-          <Grid container spacing={0}>
-            <Grid item xs={12}>
-              <Navigation/>
-            </Grid>
-            <Grid item xs={9}>
-              <h1>Content</h1>
-            </Grid>
-            <Grid item xs={3}>
-              <h1>Sidebar</h1>
-            </Grid>
-            <Grid item xs={12}>
-              <h1>Footer</h1>
-            </Grid>
-          </Grid>
-        </MuiThemeProvider>
-      </Fragment>
-    );
-  }
+    render() {
+        return (
+            <Fragment>
+                <MuiThemeProvider theme={theme}>
+                    <Grid container spacing={0}>
+                        <Grid item xs={9}>
+                            <Content />
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Sidebar/>
+                        </Grid>
+                    </Grid>
+                </MuiThemeProvider>
+            </Fragment>
+        );
+    }
 }
 
 export default App;
